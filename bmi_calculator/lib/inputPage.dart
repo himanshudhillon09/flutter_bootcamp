@@ -1,7 +1,14 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'Card.dart';
+import 'IconContent.dart';
 
-const cardColor = Color(0xFF1D1E33);
 const bottomContainerColor = Color(0xFFEB1555);
+const Color activeCardColor = Color(0xFF1D1E33);
+const Color inactiveCardColor = Color(0xFF111328);
+
+enum Gender { male, female }
 
 class InputPage extends StatefulWidget {
   @override
@@ -9,6 +16,8 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  Gender selectedGender = Gender.male;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,10 +30,34 @@ class _InputPageState extends State<InputPage> {
               child: Row(
             children: [
               Expanded(
-                child: Card(),
+                child: GestureDetector(
+                  child: emptyCard(
+                    cardChild: IconContent('Male', FontAwesomeIcons.mars),
+                    colour: selectedGender == Gender.male
+                        ? activeCardColor
+                        : inactiveCardColor,
+                  ),
+                  onTap: () {
+                    setState(() {
+                      selectedGender = Gender.male;
+                    });
+                  },
+                ),
               ),
               Expanded(
-                child: Card(),
+                child: GestureDetector(
+                  child: emptyCard(
+                    cardChild: IconContent('Female', FontAwesomeIcons.venus),
+                    colour: selectedGender == Gender.female
+                        ? activeCardColor
+                        : inactiveCardColor,
+                  ),
+                  onTap: () {
+                    setState(() {
+                      selectedGender = Gender.female;
+                    });
+                  },
+                ),
               )
             ],
           )),
@@ -35,10 +68,10 @@ class _InputPageState extends State<InputPage> {
               child: Row(
             children: [
               Expanded(
-                child: Card(),
+                child: emptyCard(),
               ),
               Expanded(
-                child: Card(),
+                child: emptyCard(),
               ),
             ],
           )),
@@ -49,22 +82,6 @@ class _InputPageState extends State<InputPage> {
             height: 60.0,
           )
         ],
-      ),
-    );
-  }
-}
-
-class Card extends StatelessWidget {
-  Card({this.colour = cardColor});
-  final Color colour;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: colour,
       ),
     );
   }
