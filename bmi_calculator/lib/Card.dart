@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 const cardColor = Color(0xFF1D1E33);
-const activeCardColor = Colors.red;
+const activeCardColor = Color(0xFF1D1E33);
 const inactiveCardColor = Color(0xFF111328);
 
-class emptyCard extends StatelessWidget {
-  emptyCard(
-      {this.colour = Colors.red,
+class ReusableCard extends StatelessWidget {
+  ReusableCard(
+      {this.colour = activeCardColor,
       this.cardChild = const SizedBox(
         width: double.infinity,
       )});
