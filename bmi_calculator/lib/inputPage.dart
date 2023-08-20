@@ -7,7 +7,7 @@ import 'IconContent.dart';
 const bottomContainerColor = Color(0xFFEB1555);
 const Color activeCardColor = Color(0xFF1D1E33);
 const Color inactiveCardColor = Color(0xFF111328);
-const numberTextStyle = TextStyle(fontSize: 50, fontWeight: FontWeight.w900);
+const numberTextStyle = TextStyle(fontSize: 55, fontWeight: FontWeight.w600);
 const labelTextStyle = TextStyle(color: Color(0xFF8D8E98), fontSize: 17);
 
 enum Gender { male, female }
@@ -20,7 +20,8 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender selectedGender = Gender.male;
   int height = 180;
-
+  int weight = 60;
+  int age = 25;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,7 +77,7 @@ class _InputPageState extends State<InputPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.baseline,
-                    textBaseline: TextBaseline.ideographic,
+                    textBaseline: TextBaseline.alphabetic,
                     children: [
                       Text(
                         height.toString(),
@@ -115,12 +116,89 @@ class _InputPageState extends State<InputPage> {
           Expanded(
               child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
-                child: ReusableCard(),
+                child: ReusableCard(
+                  cardChild: Column(
+                    children: [
+                      Text('WEIGHT', style: labelTextStyle),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        textBaseline: TextBaseline.alphabetic,
+                        children: [
+                          Text(weight.toString(), style: numberTextStyle),
+                          Text(
+                            'KG',
+                            style: labelTextStyle,
+                          )
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RoundButton(
+                              icon: FontAwesomeIcons.minus,
+                              onpress: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              }),
+                          SizedBox(width: 10.0),
+                          RoundButton(
+                              icon: FontAwesomeIcons.plus,
+                              onpress: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              }),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
               ),
               Expanded(
-                child: ReusableCard(),
+                child: ReusableCard(
+                  cardChild: Column(
+                    children: [
+                      Text('AGE', style: labelTextStyle),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        textBaseline: TextBaseline.alphabetic,
+                        children: [
+                          Text(age.toString(), style: numberTextStyle),
+                          Text(
+                            'KG',
+                            style: labelTextStyle,
+                          )
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RoundButton(
+                              icon: FontAwesomeIcons.minus,
+                              onpress: () {
+                                setState(() {
+                                  age--;
+                                });
+                              }),
+                          SizedBox(width: 10.0),
+                          RoundButton(
+                              icon: FontAwesomeIcons.plus,
+                              onpress: () {
+                                setState(() {
+                                  age++;
+                                });
+                              }),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
               ),
             ],
           )),
@@ -132,6 +210,28 @@ class _InputPageState extends State<InputPage> {
           )
         ],
       ),
+    );
+  }
+}
+
+class RoundButton extends StatelessWidget {
+  const RoundButton({super.key, required this.icon, required this.onpress});
+
+  final IconData icon;
+  final VoidCallback onpress;
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      elevation: 0,
+      onPressed: onpress,
+      constraints: BoxConstraints.tightFor(
+        width: 50.0,
+        height: 50.0,
+      ),
+      shape: CircleBorder(),
+      fillColor: Color(0xFF4c4f5E),
+      child: Icon(icon),
     );
   }
 }
