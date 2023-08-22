@@ -1,16 +1,30 @@
 # bmi_calculator
 
-App to calculate bmi according to your gender .
+Flutter app for calculating BMI according to Height, Weight, Age & Gender .
 
 ## Getting Started
+To build and run this project:
 
-This project is a starting point for a Flutter application.
+1. Get Flutter [here](https://flutter.dev) if you don't already have it
+2. Clone this repository.
+3. `cd` into the repo folder.
+4. run `flutter run-android` or `flutter run-ios` to build the app.
 
-A few resources to get you started if this is your first Flutter project:
+(Please note that a Mac with XCode is required to build for iOS)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## APP SAMPLES
+
+ 
+ | [**Test-1**]     | [**Result-1**]    | 
+|------------|-------------| 
+|  <img src="screenshots/test1.png" width="250"> |  <img src="screenshots/result1.png" width="250"> |
+
+
+ | [**Test-2**]     | [**Result-2**]    | 
+|------------|-------------| 
+|  <img src="screenshots/test2.png" width="250"> |  <img src="screenshots/result2.png" width="250"> |
+
+ | [**Test-3**]     | [**Result-3**]    | 
+|------------|-------------| 
+|  <img src="screenshots/test3.png" width="250"> |  <img src="screenshots/result3.png" width="250"> |
